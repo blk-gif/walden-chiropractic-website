@@ -3,37 +3,345 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Walden Bailey Chiropractic \u2014 Buffalo, NY</title>
+<title>Walden Bailey Chiropractic -- Buffalo, NY</title>
+<meta name="description" content="Walden Bailey Chiropractic -- 1086 Walden Ave Suite 1, Buffalo, NY 14211. Spinal adjustments, pain relief and wellness care. Call (716) 893-9200.">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-* { margin:0; padding:0; box-sizing:border-box; }
-:root {
-  --black: #080808;
-  --black2: #111;
-  --black3: #1a1a1a;
-  --gold: #FFB612;
-  --gold2: #e6a30f;
-  --white: #fff;
-  --muted: #777;
-  --border: #262626;
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#080808;--black2:#111;--black3:#1a1a1a;
+  --gold:#FFB612;--gold2:#e6a30f;
+  --white:#fff;--muted:#777;--border:#262626;
 }
-body { font-family:'Outfit',sans-serif; background:var(--black); color:var(--white); }
-a { text-decoration:none; }
-
+body{font-family:'Outfit',sans-serif;background:var(--black);color:var(--white);}
+a{text-decoration:none;color:inherit;}
 /* NAV */
-nav {
-  position:fixed; top:0; left:0; right:0; z-index:100;
-  background:rgba(8,8,8,0.96); border-bottom:1px solid var(--border);
-  padding:0 5%; height:65px;
-  display:flex; align-items:center; justify-content:space-between;
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(8,8,8,.97);border-bottom:1px solid var(--border);padding:0 5%;height:65px;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Bebas Neue',cursive;font-size:20px;letter-spacing:2px;}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{color:var(--muted);font-size:13px;font-weight:500;transition:color .18s;}
+.nav-links a:hover{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--black);padding:9px 20px;border-radius:7px;font-weight:700;font-size:13px;border:none;cursor:pointer;white-space:nowrap;}
+/* HERO */
+.hero{min-height:100vh;padding:100px 5% 60px;display:flex;align-items:center;background:var(--black);border-bottom:1px solid var(--border);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,rgba(255,182,18,.07) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:620px;position:relative;z-index:1;}
+.pill{display:inline-flex;align-items:center;gap:7px;background:rgba(255,182,18,.1);border:1px solid rgba(255,182,18,.25);border-radius:20px;padding:5px 14px;margin-bottom:20px;font-size:11px;font-weight:600;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;}
+.pill-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+h1{font-family:'Bebas Neue',cursive;font-size:clamp(48px,8vw,82px);line-height:.95;letter-spacing:2px;margin-bottom:16px;}
+h1 .gold{color:var(--gold);display:block;}
+.hero p{font-size:16px;color:var(--muted);line-height:1.75;max-width:480px;margin-bottom:30px;}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px;}
+.btn-g{background:var(--gold);color:var(--black);padding:14px 30px;border-radius:8px;font-weight:700;font-size:14px;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:7px;}
+.btn-g:hover{background:var(--gold2);}
+.btn-o{background:transparent;color:var(--white);padding:14px 28px;border-radius:8px;font-weight:600;font-size:14px;border:1.5px solid var(--border);display:inline-flex;align-items:center;gap:7px;}
+.btn-o:hover{border-color:var(--gold);color:var(--gold);}
+.stats{display:flex;gap:32px;padding-top:28px;border-top:1px solid var(--border);}
+.stat .num{font-family:'Bebas Neue',cursive;font-size:30px;color:var(--gold);}
+.stat .lbl{font-size:12px;color:var(--muted);}
+/* TRUST */
+.trust{background:var(--gold);padding:14px 5%;display:flex;gap:30px;flex-wrap:wrap;justify-content:center;}
+.trust span{font-size:12px;font-weight:700;color:var(--black);}
+/* SECTIONS */
+.sec{padding:70px 5%;}
+.sec2{padding:70px 5%;background:var(--black2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.sec-label{font-size:11px;color:var(--gold);font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;}
+.sec-title{font-family:'Bebas Neue',cursive;font-size:clamp(32px,5vw,50px);letter-spacing:1.5px;margin-bottom:10px;}
+.sec-sub{font-size:15px;color:var(--muted);max-width:520px;line-height:1.7;}
+/* HOURS GRID */
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:36px;}
+.card{background:var(--black3);border:1px solid var(--border);border-radius:14px;padding:24px;}
+.card h3{font-family:'Bebas Neue',cursive;font-size:17px;letter-spacing:1px;color:var(--gold);margin-bottom:14px;}
+.hrow{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;}
+.hrow:last-child{border-bottom:none;}
+.hrow .day{font-weight:600;}
+.hrow .time{color:var(--muted);font-size:12px;}
+.hrow.closed .time{color:#333;}
+.ci{display:flex;align-items:flex-start;gap:10px;padding:11px 0;border-bottom:1px solid var(--border);font-size:13px;line-height:1.5;}
+.ci:last-child{border-bottom:none;}
+.ci-icon{font-size:15px;flex-shrink:0;margin-top:1px;}
+.ci a{color:var(--white);transition:color .18s;}
+.ci a:hover{color:var(--gold);}
+/* SERVICES */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:40px;}
+.svc-card{background:var(--black2);border:1px solid var(--border);border-radius:13px;padding:24px;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.svc-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .25s;}
+.svc-card:hover::after{transform:scaleX(1);}
+.svc-card:hover{border-color:rgba(255,182,18,.3);transform:translateY(-3px);}
+.svc-icon{font-size:26px;margin-bottom:12px;}
+.svc-name{font-size:16px;font-weight:700;margin-bottom:7px;}
+.svc-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:12px;}
+.svc-ins{font-size:12px;color:rgba(255,182,18,.7);font-weight:500;}
+/* INSURANCE */
+.ins-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px;}
+.ins-tag{background:var(--black3);border:1px solid var(--border);border-radius:8px;padding:10px 18px;font-size:13px;font-weight:600;transition:border-color .18s;}
+.ins-tag:hover{border-color:rgba(255,182,18,.35);}
+/* CONTACT CTA */
+.cta-section{padding:80px 5%;background:linear-gradient(135deg,var(--black2) 0%,var(--black3) 100%);border-top:1px solid var(--border);}
+.cta-inner{max-width:700px;margin:0 auto;text-align:center;}
+.cta-inner h2{font-family:'Bebas Neue',cursive;font-size:clamp(36px,6vw,60px);letter-spacing:2px;margin-bottom:14px;}
+.cta-inner h2 span{color:var(--gold);}
+.cta-inner p{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;}
+.cta-box{background:var(--black);border:1px solid var(--border);border-radius:16px;padding:36px;margin-bottom:24px;}
+.cta-phone{font-family:'Bebas Neue',cursive;font-size:clamp(36px,7vw,64px);color:var(--gold);letter-spacing:3px;display:block;margin-bottom:8px;transition:color .18s;}
+.cta-phone:hover{color:var(--gold2);}
+.cta-hours{font-size:13px;color:var(--muted);margin-bottom:24px;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.cta-note{font-size:12px;color:var(--muted);margin-top:20px;line-height:1.6;}
+/* HIPAA BADGE */
+.hipaa-bar{background:var(--black3);border:1px solid var(--border);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:12px;margin-bottom:20px;text-align:left;}
+.hipaa-icon{font-size:22px;flex-shrink:0;}
+.hipaa-text .ht{font-size:13px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.hipaa-text .hs{font-size:12px;color:var(--muted);}
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:40px;}
+.rev-card{background:var(--black3);border:1px solid var(--border);border-radius:13px;padding:24px;transition:border-color .2s;}
+.rev-card:hover{border-color:rgba(255,182,18,.25);}
+.stars{color:var(--gold);font-size:14px;margin-bottom:10px;letter-spacing:2px;}
+.rev-txt{font-size:13px;color:var(--muted);line-height:1.75;margin-bottom:14px;font-style:italic;}
+.rev-name{font-size:13px;font-weight:700;}
+.rev-det{font-size:11px;color:var(--muted);}
+/* PRIVACY */
+.privacy-section{padding:50px 5%;border-top:1px solid var(--border);}
+.privacy-box{background:var(--black2);border:1px solid var(--border);border-radius:12px;padding:24px;font-size:13px;color:var(--muted);line-height:1.8;max-width:800px;}
+.privacy-box h3{font-size:15px;font-weight:700;color:var(--white);margin-bottom:10px;}
+.privacy-box p{margin-bottom:10px;}
+/* FOOTER */
+footer{background:var(--black2);border-top:2px solid var(--gold);padding:44px 5% 24px;}
+.fg{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:30px;}
+.fl{font-family:'Bebas Neue',cursive;font-size:22px;letter-spacing:2px;margin-bottom:6px;}
+.fl span{color:var(--gold);}
+.fd{font-size:13px;color:var(--muted);line-height:1.7;}
+.fh{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.flk{display:block;font-size:13px;color:var(--muted);margin-bottom:8px;transition:color .18s;}
+.flk:hover{color:var(--gold);}
+.fb{border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;font-size:12px;color:#444;flex-wrap:wrap;gap:8px;}
+.hipaa-footer{display:inline-flex;align-items:center;gap:6px;background:rgba(255,182,18,.08);border:1px solid rgba(255,182,18,.2);border-radius:6px;padding:4px 10px;font-size:11px;color:var(--gold);font-weight:600;}
+/* SCROLL TO TOP */
+.to-top{position:fixed;bottom:24px;right:24px;width:42px;height:42px;background:var(--gold);border-radius:50%;border:none;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,182,18,.4);transition:all .2s;opacity:0;pointer-events:none;z-index:99;color:var(--black);font-weight:700;}
+.to-top.show{opacity:1;pointer-events:all;}
+/* RESPONSIVE */
+@media(max-width:768px){
+  .grid2{grid-template-columns:1fr;}
+  .fg{grid-template-columns:1fr;}
+  .stats{gap:20px;}
+  .nav-links{display:none;}
+  .cta-btns{flex-direction:column;align-items:center;}
 }
-.logo { font-family:'Bebas Neue',cursive; font-size:20px; letter-spacing:2px; }
-.logo span { color:var(--gold); }
-.nav-cta {
-  background:var(--gold); color:var(--black);
-  padding:9px 20px; border-radius:7px;
-  font-weight:700; font-size:13px; border:none; cursor:pointer;
-}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">WALDEN BAILEY <span>CHIRO</span></div>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#insurance">Insurance</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <a href="tel:+17168939200"><button class="nav-cta">Call to Book</button></a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="pill"><span class="pill-dot"></span>Now Accepting New Patients -- Buffalo, NY</div>
+    <h1>PAIN RELIEF.<span class="gold">REAL RESULTS.</span>BUFFALO STRONG.</h1>
+    <p>Expert chiropractic care for back pain, neck pain, sciatica, and injury recovery. Most insurance accepted. Same-week appointments available.</p>
+    <div class="btns">
+      <a href="tel:+17168939200"><button class="btn-g">Call to Book Now</button></a>
+      <a href="#services" class="btn-o">View Services</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="num">12+</div><div class="lbl">Years in Buffalo</div></div>
+      <div class="stat"><div class="num">2,400+</div><div class="lbl">Patients Treated</div></div>
+      <div class="stat"><div class="num">98%</div><div class="lbl">Satisfaction</div></div>
+    </div>
+  </div>
+</section>
+
+<div class="trust">
+  <span>HIPAA Compliant Practice</span>
+  <span>Most Insurance Accepted</span>
+  <span>Same-Week Appointments</span>
+  <span>Personal Injury Billing</span>
+  <span>Buffalo, NY 14211</span>
+</div>
+
+<section class="sec2">
+  <div class="sec-label">Location and Hours</div>
+  <div class="sec-title">FIND US</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>Office Hours</h3>
+      <div class="hrow"><span class="day">Monday</span><span class="time">8:00-11:45 AM / 2:00-4:00 PM</span></div>
+      <div class="hrow"><span class="day">Tuesday</span><span class="time">1:00-4:00 PM</span></div>
+      <div class="hrow"><span class="day">Wednesday</span><span class="time">8:00-11:45 AM / 2:00-4:00 PM</span></div>
+      <div class="hrow"><span class="day">Thursday</span><span class="time">8:00-11:45 AM</span></div>
+      <div class="hrow"><span class="day">Friday</span><span class="time">8:00-11:45 AM / 2:00-4:00 PM</span></div>
+      <div class="hrow"><span class="day">Saturday</span><span class="time">9:00-11:45 AM</span></div>
+      <div class="hrow closed"><span class="day">Sunday</span><span class="time">Closed</span></div>
+    </div>
+    <div class="card">
+      <h3>Contact Us</h3>
+      <div class="ci"><span class="ci-icon">Location</span><div><a href="https://maps.google.com/?q=1086+Walden+Ave+Suite+1+Buffalo+NY+14211" target="_blank">1086 Walden Ave, Suite 1<br>Buffalo, NY 14211</a></div></div>
+      <div class="ci"><span class="ci-icon">Phone</span><div><a href="tel:+17168939200">(716) 893-9200</a></div></div>
+      <div class="ci"><span class="ci-icon">Booking</span><div>Call us to schedule your appointment. Same-week availability on most days.</div></div>
+      <div class="ci"><span class="ci-icon">Insurance</span><div>We verify your insurance before your visit. Most major plans accepted.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="services">
+  <div class="sec-label">What We Offer</div>
+  <div class="sec-title">OUR SERVICES</div>
+  <div class="sec-sub">Comprehensive chiropractic care focused on spinal health, pain relief, and improved mobility. Call us to discuss your needs.</div>
+  <div class="svc-grid">
+    <div class="svc-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="svc-icon">--</div>
+      <div class="svc-name">Spinal Adjustment</div>
+      <div class="svc-desc">Targeted spinal manipulation to restore proper alignment, relieve nerve pressure, and reduce pain.</div>
+      <div class="svc-ins">Most insurance accepted -- 45 min</div>
+    </div>
+    <div class="svc-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="svc-icon">--</div>
+      <div class="svc-name">Initial Consultation</div>
+      <div class="svc-desc">Full health evaluation, physical exam, and personalized treatment plan designed for you.</div>
+      <div class="svc-ins">Insurance and self-pay -- 60 min</div>
+    </div>
+    <div class="svc-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="svc-icon">--</div>
+      <div class="svc-name">Spinal Decompression</div>
+      <div class="svc-desc">Non-surgical traction therapy for herniated discs, sciatica, and chronic lower back pain.</div>
+      <div class="svc-ins">Most major insurance -- 30 min</div>
+    </div>
+    <div class="svc-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="svc-icon">--</div>
+      <div class="svc-name">Auto Accident Injury</div>
+      <div class="svc-desc">Specialized care for whiplash, soft tissue injuries, and post-accident recovery. PI billing handled.</div>
+      <div class="svc-ins">Personal injury billing -- 45 min</div>
+    </div>
+    <div class="svc-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="svc-icon">--</div>
+      <div class="svc-name">Follow-up Care</div>
+      <div class="svc-desc">Ongoing progress evaluations and continued treatment for patients currently in active care.</div>
+      <div class="svc-ins">All insurance plans -- 30 min</div>
+    </div>
+    <div class="svc-card" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      <div class="svc-icon">--</div>
+      <div class="svc-name">Wellness Care</div>
+      <div class="svc-desc">Preventative chiropractic maintenance to keep your spine healthy and your body performing its best.</div>
+      <div class="svc-ins">Self-pay friendly -- 30 min</div>
+    </div>
+  </div>
+</section>
+
+<section class="sec2" id="insurance">
+  <div class="sec-label">Accepted Plans</div>
+  <div class="sec-title">WE ACCEPT YOUR INSURANCE</div>
+  <div class="sec-sub">We bill insurance directly so you never have to deal with the paperwork. Do not see yours listed? Call us to verify your coverage.</div>
+  <div class="ins-tags">
+    <div class="ins-tag">BlueCross BlueShield</div>
+    <div class="ins-tag">Aetna</div>
+    <div class="ins-tag">UnitedHealth</div>
+    <div class="ins-tag">Cigna</div>
+    <div class="ins-tag">Medicare</div>
+    <div class="ins-tag">Medicaid</div>
+    <div class="ins-tag">Personal Injury / Auto</div>
+    <div class="ins-tag">Workers Compensation</div>
+    <div class="ins-tag">Self-Pay</div>
+    <div class="ins-tag">Call to verify your plan</div>
+  </div>
+</section>
+
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="sec-label" style="text-align:center">Schedule Your Visit</div>
+    <h2>READY TO FEEL <span>BETTER?</span></h2>
+    <p>Call us to schedule your appointment. Our team will verify your insurance, answer your questions, and get you in as soon as possible.</p>
+
+    <div class="hipaa-bar">
+      <span class="hipaa-icon">Shield</span>
+      <div class="hipaa-text">
+        <div class="ht">HIPAA Compliant Practice</div>
+        <div class="hs">Your health information is protected. We follow all HIPAA privacy and security regulations.</div>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <a href="tel:+17168939200" class="cta-phone">(716) 893-9200</a>
+      <div class="cta-hours">Mon / Wed / Fri: 8:00-11:45 AM and 2:00-4:00 PM &nbsp;|&nbsp; Tue: 1:00-4:00 PM &nbsp;|&nbsp; Thu: 8:00-11:45 AM &nbsp;|&nbsp; Sat: 9:00-11:45 AM</div>
+      <div class="cta-btns">
+        <a href="tel:+17168939200"><button class="btn-g">Call Now to Book</button></a>
+        <a href="https://maps.google.com/?q=1086+Walden+Ave+Suite+1+Buffalo+NY+14211" target="_blank"><button class="btn-o">Get Directions</button></a>
+      </div>
+    </div>
+    <div class="cta-note">We accept most insurance plans and will verify your coverage before your visit. For billing questions or to discuss your care options, please call during office hours.</div>
+  </div>
+</section>
+
+<section class="sec2">
+  <div class="sec-label">Patient Reviews</div>
+  <div class="sec-title">WHAT BUFFALO IS SAYING</div>
+  <div class="rev-grid">
+    <div class="rev-card"><div class="stars">* * * * *</div><div class="rev-txt">"After my accident I was in constant pain. The team at Walden Bailey got me back on my feet fast. They handled everything with my insurance -- I did not have to worry about a thing."</div><div class="rev-name">Buffalo Patient</div><div class="rev-det">Auto Injury Care</div></div>
+    <div class="rev-card"><div class="stars">* * * * *</div><div class="rev-txt">"I have been coming here for two years. Always easy to get an appointment and the staff is incredibly professional. Best chiropractor in Buffalo."</div><div class="rev-name">Buffalo Patient</div><div class="rev-det">Ongoing Care</div></div>
+    <div class="rev-card"><div class="stars">* * * * *</div><div class="rev-txt">"Chronic back pain for years. After just a few visits I felt like a new person. They build a real treatment plan around your specific needs."</div><div class="rev-name">Western NY Patient</div><div class="rev-det">Decompression Therapy</div></div>
+  </div>
+</section>
+
+<section class="privacy-section">
+  <div class="sec-label">Your Privacy</div>
+  <div class="sec-title">NOTICE OF PRIVACY PRACTICES</div>
+  <div class="privacy-box">
+    <h3>How We Protect Your Health Information</h3>
+    <p>Walden Bailey Chiropractic is committed to protecting the privacy and security of your health information in accordance with the Health Insurance Portability and Accountability Act (HIPAA).</p>
+    <p>We collect only the minimum necessary health information to provide you with quality chiropractic care. Your information is never sold, shared with third parties for marketing purposes, or used in any way that is not directly related to your care or as required by law.</p>
+    <p>You have the right to access your health records, request corrections, and receive an accounting of disclosures. To exercise these rights or for questions about our privacy practices, please contact us at (716) 893-9200 or visit our office at 1086 Walden Ave, Suite 1, Buffalo, NY 14211.</p>
+    <p>This website does not collect any protected health information (PHI). All appointment scheduling and clinical communication occurs by phone or in person.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="fg">
+    <div>
+      <div class="fl">WALDEN BAILEY <span>CHIROPRACTIC</span></div>
+      <p class="fd">Expert spinal care and personalized treatment for pain relief, injury recovery, and whole-body wellness. Proudly serving the Buffalo community.</p>
+      <br>
+      <span class="hipaa-footer">HIPAA Compliant Practice</span>
+    </div>
+    <div>
+      <div class="fh">Services</div>
+      <a class="flk" href="#services">Spinal Adjustment</a>
+      <a class="flk" href="#services">Initial Consultation</a>
+      <a class="flk" href="#services">Decompression</a>
+      <a class="flk" href="#services">Auto Injury</a>
+      <a class="flk" href="#services">Follow-up Care</a>
+    </div>
+    <div>
+      <div class="fh">Contact</div>
+      <a class="flk" href="https://maps.google.com/?q=1086+Walden+Ave+Suite+1+Buffalo+NY+14211" target="_blank">1086 Walden Ave, Suite 1<br>Buffalo, NY 14211</a>
+      <br>
+      <a class="flk" href="tel:+17168939200">(716) 893-9200</a>
+      <a class="flk" href="#contact">Schedule a Visit</a>
+    </div>
+  </div>
+  <div class="fb">
+    <span>2026 Walden Bailey Chiropractic -- Buffalo, NY -- All rights reserved</span>
+    <span>HIPAA Compliant -- Your privacy is protected</span>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">^</button>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('toTop').classList.toggle('show',window.scrollY>400);
+});
+</script>
+</body>
+</html>
 
 /* HERO */
 .hero {
