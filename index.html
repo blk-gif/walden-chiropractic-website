@@ -1080,9 +1080,7 @@
     };
 
     try {
-      // ── Replace this URL with your Twilio backend endpoint ──
-      // e.g. a Twilio Function, Vercel serverless fn, or Express route
-      const ENDPOINT = '/api/contact'; // TODO: configure backend
+      const ENDPOINT = 'https://walden-bailey-chiropractic.onrender.com/api/contact';
       const res = await fetch(ENDPOINT, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

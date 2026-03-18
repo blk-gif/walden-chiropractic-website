@@ -1,0 +1,31 @@
+services:
+  - type: web
+    name: walden-bailey-chiropractic
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_FROM_NUMBER
+        sync: false
+      - key: PRACTICE_PHONE_E164
+        sync: false
+      - key: PRACTICE_EMAIL
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: SENDGRID_FROM_EMAIL
+        sync: false
+      - key: SEND_PATIENT_CONFIRMATION
+        value: "true"
+      - key: ALLOWED_ORIGIN
+        value: https://blk-gif.github.io
