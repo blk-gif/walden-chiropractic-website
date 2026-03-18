@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Walden Bailey Chiropractic — Professional chiropractic care in Buffalo, NY. Spinal adjustments, decompression, auto accident injury, and wellness care. Call (716) 893-9200." />
+  <title>Walden Bailey Chiropractic | Buffalo, NY</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080808;
+      --bg2:      #0f0f0f;
+      --bg3:      #161616;
+      --gold:     #FFB612;
+      --gold-dk:  #d99a00;
+      --gold-lt:  #ffd066;
+      --text:     #f0ece2;
+      --muted:    #9a9585;
+      --border:   #2a2620;
+      --radius:   10px;
+      --shadow:   0 4px 30px rgba(0,0,0,.6);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCROLLBAR ─── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--gold-dk); border-radius: 3px; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(8,8,8,.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 22px; height: 22px; fill: #080808; }
+    .nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.05rem; color: var(--text); line-height: 1.2; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: .9rem; font-weight: 500;
+      letter-spacing: .03em; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-cta {
+      background: var(--gold); color: #080808;
+      padding: .5rem 1.3rem; border-radius: 50px;
+      font-weight: 600; font-size: .88rem; text-decoration: none;
+      transition: background .2s, transform .15s;
+      white-space: nowrap;
+    }
+    .nav-cta:hover { background: var(--gold-lt); transform: translateY(-1px); }
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      cursor: pointer; background: none; border: none; padding: 4px;
+    }
+    .hamburger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--gold); border-radius: 2px;
+      transition: all .3s;
+    }
+    .mobile-menu {
+      display: none; position: fixed; top: 68px; left: 0; width: 100%;
+      background: rgba(8,8,8,.97); border-bottom: 1px solid var(--border);
+      z-index: 999; padding: 1.5rem 5vw 2rem;
+      flex-direction: column; gap: 1rem;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      color: var(--text); text-decoration: none; font-size: 1.05rem;
+      font-weight: 500; padding: .5rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .mobile-menu a:last-child { border-bottom: none; color: var(--gold); font-weight: 600; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      padding: 120px 5vw 80px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 50%, rgba(255,182,18,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,182,18,.04) 0%, transparent 60%),
+        linear-gradient(160deg, #0d0d0d 0%, #080808 100%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0; opacity: .04;
+      background-image:
+        linear-gradient(var(--gold) 1px, transparent 1px),
+        linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,182,18,.1); border: 1px solid rgba(255,182,18,.25);
+      border-radius: 50px; padding: .4rem 1rem;
+      font-size: .8rem; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge::before {
+      content: ''; width: 8px; height: 8px;
+      background: var(--gold); border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%,100% { opacity: 1; transform: scale(1); }
+      50% { opacity: .5; transform: scale(1.3); }
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 700; line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 em { font-style: normal; color: var(--gold); }
+    .hero p {
+      font-size: 1.1rem; color: var(--muted);
+      max-width: 520px; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: #080808;
+      padding: .85rem 2rem; border-radius: 50px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: background .2s, transform .15s, box-shadow .2s;
+      box-shadow: 0 0 24px rgba(255,182,18,.2);
+    }
+    .btn-primary:hover { background: var(--gold-lt); transform: translateY(-2px); box-shadow: 0 0 36px rgba(255,182,18,.35); }
+    .btn-outline {
+      background: transparent; color: var(--text);
+      padding: .85rem 2rem; border-radius: 50px;
+      font-weight: 600; font-size: .95rem; text-decoration: none;
+      border: 1px solid var(--border);
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+    .hero-stats {
+      display: flex; gap: 2.5rem; flex-wrap: wrap;
+      margin-top: 3.5rem; padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem; font-weight: 700; color: var(--gold);
+    }
+    .stat-label { font-size: .8rem; color: var(--muted); letter-spacing: .05em; text-transform: uppercase; }
+
+    /* ─── SECTIONS ─── */
+    section { padding: 90px 5vw; }
+    .section-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: .8rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700; line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1rem;
+      max-width: 560px; margin-bottom: 3rem;
+    }
+    .divider {
+      width: 50px; height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      border-radius: 2px; margin: 1rem 0 2rem;
+    }
+
+    /* ─── ABOUT ─── */
+    #about { background: var(--bg2); }
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem; align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .about-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .about-card-icon {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: rgba(255,182,18,.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .about-card-icon svg { width: 28px; height: 28px; fill: var(--gold); }
+    .about-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem; margin-bottom: .6rem;
+    }
+    .about-card p { color: var(--muted); font-size: .92rem; }
+    .about-accent {
+      position: absolute; top: -20px; right: -20px;
+      width: 120px; height: 120px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(255,182,18,.12), transparent 70%);
+      pointer-events: none;
+    }
+    .about-cards { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    /* ─── SERVICES ─── */
+    #services { background: var(--bg); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 2rem;
+      transition: border-color .3s, transform .25s, box-shadow .3s;
+      position: relative; overflow: hidden;
+      cursor: default;
+    }
+    .service-card::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .35s;
+    }
+    .service-card:hover {
+      border-color: rgba(255,182,18,.35);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.5);
+    }
+    .service-card:hover::after { transform: scaleX(1); }
+    .service-icon {
+      width: 52px; height: 52px; border-radius: 10px;
+      background: rgba(255,182,18,.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.2rem;
+    }
+    .service-icon svg { width: 26px; height: 26px; fill: var(--gold); }
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; margin-bottom: .6rem;
+    }
+    .service-card p { color: var(--muted); font-size: .88rem; line-height: 1.6; }
+
+    /* ─── HOURS ─── */
+    #hours { background: var(--bg2); }
+    .hours-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: start;
+    }
+    .hours-table {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+    }
+    .hours-table-header {
+      background: linear-gradient(135deg, rgba(255,182,18,.15), rgba(255,182,18,.05));
+      padding: 1.2rem 1.8rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 600; color: var(--gold); font-size: .92rem;
+    }
+    .hours-table-header svg { width: 18px; height: 18px; fill: var(--gold); }
+    .hours-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 1.8rem;
+      border-bottom: 1px solid var(--border);
+      transition: background .2s;
+    }
+    .hours-row:last-child { border-bottom: none; }
+    .hours-row:hover { background: rgba(255,182,18,.04); }
+    .hours-day { font-weight: 500; font-size: .93rem; }
+    .hours-time {
+      font-size: .87rem; color: var(--muted);
+      text-align: right;
+    }
+    .hours-closed { color: #ff5555; font-size: .87rem; font-weight: 500; }
+    .hours-today { background: rgba(255,182,18,.07); }
+    .today-badge {
+      font-size: .7rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--gold);
+      background: rgba(255,182,18,.15);
+      padding: .2rem .5rem; border-radius: 4px; margin-left: .5rem;
+    }
+    .map-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px; overflow: hidden;
+    }
+    .map-placeholder {
+      height: 220px;
+      background:
+        linear-gradient(rgba(8,8,8,.6), rgba(8,8,8,.6)),
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(255,182,18,.05) 39px, rgba(255,182,18,.05) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(255,182,18,.05) 39px, rgba(255,182,18,.05) 40px);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .map-pin {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+    .map-pin-icon {
+      width: 48px; height: 48px; border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      background: var(--gold);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 20px rgba(255,182,18,.4);
+    }
+    .map-pin-icon svg { transform: rotate(45deg); width: 22px; height: 22px; fill: #080808; }
+    .map-pin-pulse {
+      width: 60px; height: 12px; border-radius: 50%;
+      background: rgba(255,182,18,.2);
+      filter: blur(4px);
+      margin-top: -4px;
+    }
+    .address-block { padding: 1.5rem 1.8rem; }
+    .address-block h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem; margin-bottom: .6rem;
+    }
+    .address-block p { color: var(--muted); font-size: .9rem; line-height: 1.7; }
+    .address-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--gold); font-size: .88rem; font-weight: 600;
+      text-decoration: none; margin-top: .8rem;
+      transition: color .2s;
+    }
+    .address-link:hover { color: var(--gold-lt); }
+
+    /* ─── INSURANCE ─── */
+    #insurance { background: var(--bg); }
+    .insurance-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem; margin-bottom: 2rem;
+    }
+    .ins-badge {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.4rem;
+      display: flex; align-items: center; gap: 10px;
+      font-size: .92rem; font-weight: 500;
+      transition: border-color .25s, transform .2s;
+    }
+    .ins-badge:hover { border-color: rgba(255,182,18,.4); transform: translateY(-2px); }
+    .ins-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--gold); flex-shrink: 0;
+    }
+    .ins-note {
+      background: rgba(255,182,18,.07);
+      border: 1px solid rgba(255,182,18,.2);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.6rem;
+      font-size: .9rem; color: var(--muted);
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .ins-note svg { width: 18px; height: 18px; fill: var(--gold); flex-shrink: 0; margin-top: 2px; }
+
+    /* ─── CONTACT ─── */
+    #contact { background: var(--bg2); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+    .contact-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+      margin-bottom: 1.8rem;
+    }
+    .contact-icon {
+      width: 46px; height: 46px; border-radius: 10px;
+      background: rgba(255,182,18,.1);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-icon svg { width: 22px; height: 22px; fill: var(--gold); }
+    .contact-item h4 { font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: .3rem; }
+    .contact-item p, .contact-item a {
+      color: var(--text); font-size: .95rem; text-decoration: none;
+      line-height: 1.6;
+    }
+    .contact-item a:hover { color: var(--gold); }
+    .booking-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem;
+      position: relative; overflow: hidden;
+    }
+    .booking-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-lt));
+    }
+    .booking-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; margin-bottom: .8rem;
+    }
+    .booking-card p { color: var(--muted); font-size: .93rem; margin-bottom: 1.8rem; }
+    .phone-big {
+      display: flex; align-items: center; gap: 12px;
+      background: rgba(255,182,18,.08);
+      border: 1px solid rgba(255,182,18,.2);
+      border-radius: 12px; padding: 1.2rem 1.5rem;
+      text-decoration: none; margin-bottom: 1.5rem;
+      transition: background .2s, border-color .2s;
+    }
+    .phone-big:hover { background: rgba(255,182,18,.14); border-color: rgba(255,182,18,.4); }
+    .phone-big svg { width: 26px; height: 26px; fill: var(--gold); }
+    .phone-big-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem; font-weight: 700; color: var(--gold);
+    }
+    .phone-big-label { font-size: .78rem; color: var(--muted); }
+    .booking-note {
+      font-size: .83rem; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .booking-note svg { width: 14px; height: 14px; fill: var(--muted); }
+
+    /* ─── HIPAA ─── */
+    #hipaa { background: var(--bg); }
+    .hipaa-header {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hipaa-shield {
+      width: 56px; height: 56px; border-radius: 12px;
+      background: rgba(255,182,18,.1);
+      border: 1px solid rgba(255,182,18,.2);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .hipaa-shield svg { width: 28px; height: 28px; fill: var(--gold); }
+    .hipaa-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; }
+    .hipaa-subtitle { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
+    .hipaa-body {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2.5rem;
+      max-width: 900px;
+    }
+    .hipaa-section { margin-bottom: 2rem; }
+    .hipaa-section:last-child { margin-bottom: 0; }
+    .hipaa-section h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; color: var(--gold);
+      margin-bottom: .7rem;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .hipaa-section h3::before {
+      content: '';
+      width: 18px; height: 2px;
+      background: var(--gold); border-radius: 1px;
+    }
+    .hipaa-section p, .hipaa-section li {
+      color: var(--muted); font-size: .9rem; line-height: 1.75;
+    }
+    .hipaa-section ul { padding-left: 1.2rem; }
+    .hipaa-section li { margin-bottom: .35rem; }
+    .hipaa-divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+    .hipaa-effective {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,182,18,.07);
+      border: 1px solid rgba(255,182,18,.15);
+      border-radius: 6px; padding: .5rem 1rem;
+      font-size: .82rem; color: var(--muted);
+      margin-top: 1.5rem;
+    }
+    .hipaa-effective strong { color: var(--gold); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--border);
+      padding: 3rem 5vw;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem; margin-bottom: 2.5rem;
+    }
+    .footer-brand p { color: var(--muted); font-size: .88rem; max-width: 320px; margin-top: .8rem; line-height: 1.7; }
+    .footer-col h4 {
+      font-size: .8rem; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    .footer-col a {
+      display: block; color: var(--muted);
+      text-decoration: none; font-size: .88rem;
+      margin-bottom: .55rem; transition: color .2s;
+    }
+    .footer-col a:hover { color: var(--text); }
+    .footer-bottom {
+      padding-top: 2rem; border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-bottom p { color: var(--muted); font-size: .82rem; }
+    .footer-bottom a { color: var(--gold); text-decoration: none; }
+    .footer-hipaa-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,182,18,.07);
+      border: 1px solid rgba(255,182,18,.15);
+      border-radius: 6px; padding: .4rem .9rem;
+      font-size: .78rem; color: var(--muted);
+    }
+    .footer-hipaa-badge svg { width: 14px; height: 14px; fill: var(--gold); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+      .about-grid, .hours-layout, .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      section { padding: 70px 5vw; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 100px 5vw 60px; }
+      .hero h1 { font-size: 2.1rem; }
+      .hero-stats { gap: 1.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .insurance-grid { grid-template-columns: 1fr 1fr; }
+      .hipaa-body { padding: 1.5rem; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+
+    /* ─── ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .fade-up.visible { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2C9.8 2 8 3.8 8 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 10c-4.4 0-8 2-8 4v2h16v-2c0-2-3.6-4-8-4z"/>
+      </svg>
+    </div>
+    <div class="nav-logo-text">Walden Bailey<br><span>Chiropractic</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#insurance">Insurance</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#hipaa">Privacy</a></li>
+  </ul>
+  <a href="tel:7168939200" class="nav-cta">Call Now</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#hours" onclick="closeMobile()">Hours &amp; Location</a>
+  <a href="#insurance" onclick="closeMobile()">Insurance</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+  <a href="#hipaa" onclick="closeMobile()">Privacy Notice</a>
+  <a href="tel:7168939200" onclick="closeMobile()">(716) 893-9200 — Call to Book</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Accepting New Patients</div>
+    <h1>Expert Chiropractic Care<br>in <em>Buffalo, NY</em></h1>
+    <p>Personalized, evidence-based chiropractic treatment designed to relieve pain, restore function, and support your long-term wellness.</p>
+    <div class="hero-actions">
+      <a href="tel:7168939200" class="btn-primary">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        Call to Book: (716) 893-9200
+      </a>
+      <a href="#services" class="btn-outline">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Our Services
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">Services Offered</div>
+      </div>
+      <div>
+        <div class="stat-num">9</div>
+        <div class="stat-label">Insurance Plans</div>
+      </div>
+      <div>
+        <div class="stat-num">6</div>
+        <div class="stat-label">Days a Week</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <p class="section-label">Who We Are</p>
+      <h2 class="section-title">Your Health Is Our <em style="font-style:normal;color:var(--gold)">Priority</em></h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);font-size:.97rem;line-height:1.8;margin-bottom:1.2rem;">
+        At Walden Bailey Chiropractic, we are committed to delivering compassionate, individualized care to patients throughout the Buffalo community. Whether you're recovering from an auto accident, managing a chronic condition, or simply investing in your long-term wellness, our team is here to help you move better and feel better.
+      </p>
+      <p style="color:var(--muted);font-size:.97rem;line-height:1.8;">
+        We accept a wide range of insurance plans and offer flexible scheduling — including Saturday morning appointments — so quality chiropractic care fits your life.
+      </p>
+    </div>
+    <div class="about-visual">
+      <div class="about-cards">
+        <div class="about-card">
+          <div class="about-accent"></div>
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-11v6h2v-6h-2zm0-4v2h2V7h-2z"/></svg>
+          </div>
+          <h3>Patient-Centered Care</h3>
+          <p>Every treatment plan is tailored to your unique health goals and medical history.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5C3.89 4 3 4.9 3 6v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/></svg>
+          </div>
+          <h3>Convenient Scheduling</h3>
+          <p>Open Monday through Saturday, with morning and afternoon availability most days.</p>
+        </div>
+        <div class="about-card">
+          <div class="about-card-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12V11c0 4.52-3.08 8.74-7 9.93-3.92-1.19-7-5.41-7-9.93V6.3l7-3.12z"/></svg>
+          </div>
+          <h3>HIPAA Compliant</h3>
+          <p>Your health information is protected and handled with the highest standard of privacy.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ SERVICES ═══════════ -->
+<section id="services">
+  <p class="section-label">What We Offer</p>
+  <h2 class="section-title">Our Services</h2>
+  <div class="divider"></div>
+  <p class="section-sub">Comprehensive chiropractic treatments to address pain, injury, and long-term wellness — all provided by experienced professionals.</p>
+  <div class="services-grid">
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2a5 5 0 1 0 0 10A5 5 0 0 0 12 2zM5 22v-1a7 7 0 0 1 14 0v1H5z"/></svg>
+      </div>
+      <h3>Initial Consultation</h3>
+      <p>A thorough evaluation of your medical history, symptoms, and spinal health to build a personalized care plan.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+      </div>
+      <h3>Spinal Adjustment</h3>
+      <p>Precise, controlled manipulation of the spine to restore alignment, relieve nerve pressure, and reduce pain.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+      </div>
+      <h3>Spinal Decompression</h3>
+      <p>Non-surgical traction therapy to gently relieve pressure on compressed discs and pinched nerves.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      </div>
+      <h3>Auto Accident Injury</h3>
+      <p>Targeted treatment for whiplash, soft tissue injuries, and musculoskeletal trauma following motor vehicle accidents.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      </div>
+      <h3>Follow-up Care</h3>
+      <p>Ongoing treatment visits to monitor progress, adjust your care plan, and support lasting recovery.</p>
+    </div>
+
+    <div class="service-card fade-up">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm-1-5h2v2h-2v-2zm1-14a4 4 0 0 0-4 4h2a2 2 0 1 1 4 0c0 2-3 1.75-3 5h2c0-2.25 3-2.5 3-5a4 4 0 0 0-4-4z"/></svg>
+      </div>
+      <h3>Wellness Care</h3>
+      <p>Preventative chiropractic visits to maintain spinal health, improve posture, and enhance overall quality of life.</p>
+    </div>
+
+  </div>
+  <p style="margin-top:2rem;font-size:.88rem;color:var(--muted);text-align:center;">
+    Call <a href="tel:7168939200" style="color:var(--gold);text-decoration:none;font-weight:600;">(716) 893-9200</a> to discuss which services are right for you.
+  </p>
+</section>
+
+<!-- ═══════════ HOURS & LOCATION ═══════════ -->
+<section id="hours">
+  <p class="section-label">Find Us</p>
+  <h2 class="section-title">Hours &amp; Location</h2>
+  <div class="divider"></div>
+  <div class="hours-layout">
+    <div>
+      <div class="hours-table">
+        <div class="hours-table-header">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+          Office Hours
+        </div>
+        <div class="hours-row" id="row-mon">
+          <div class="hours-day">Monday</div>
+          <div class="hours-time">8:00–11:45 AM &amp; 2:00–4:00 PM</div>
+        </div>
+        <div class="hours-row" id="row-tue">
+          <div class="hours-day">Tuesday</div>
+          <div class="hours-time">1:00–4:00 PM</div>
+        </div>
+        <div class="hours-row" id="row-wed">
+          <div class="hours-day">Wednesday</div>
+          <div class="hours-time">8:00–11:45 AM &amp; 2:00–4:00 PM</div>
+        </div>
+        <div class="hours-row" id="row-thu">
+          <div class="hours-day">Thursday</div>
+          <div class="hours-time">8:00–11:45 AM</div>
+        </div>
+        <div class="hours-row" id="row-fri">
+          <div class="hours-day">Friday</div>
+          <div class="hours-time">8:00–11:45 AM &amp; 2:00–4:00 PM</div>
+        </div>
+        <div class="hours-row" id="row-sat">
+          <div class="hours-day">Saturday</div>
+          <div class="hours-time">9:00–11:45 AM</div>
+        </div>
+        <div class="hours-row" id="row-sun">
+          <div class="hours-day">Sunday</div>
+          <div class="hours-closed">Closed</div>
+        </div>
+      </div>
+      <p style="margin-top:1rem;font-size:.82rem;color:var(--muted);">Hours subject to change. Please call to confirm your appointment.</p>
+    </div>
+    <div>
+      <div class="map-card">
+        <div class="map-placeholder">
+          <div class="map-pin">
+            <div class="map-pin-icon">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+            </div>
+            <div class="map-pin-pulse"></div>
+          </div>
+        </div>
+        <div class="address-block">
+          <h3>Walden Bailey Chiropractic</h3>
+          <p>
+            1086 Walden Ave, Suite 1<br>
+            Buffalo, NY 14211
+          </p>
+          <a href="https://maps.google.com/?q=1086+Walden+Ave+Suite+1+Buffalo+NY+14211" target="_blank" rel="noopener noreferrer" class="address-link">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M21 3L3 10.53v.98l6.84 2.65L12.48 21h.98L21 3z"/></svg>
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ INSURANCE ═══════════ -->
+<section id="insurance">
+  <p class="section-label">Coverage</p>
+  <h2 class="section-title">Accepted Insurance</h2>
+  <div class="divider"></div>
+  <p class="section-sub">We work with most major insurance providers so you can focus on your health, not the paperwork.</p>
+  <div class="insurance-grid">
+    <div class="ins-badge"><div class="ins-dot"></div>BlueCross BlueShield</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Aetna</div>
+    <div class="ins-badge"><div class="ins-dot"></div>UnitedHealth</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Cigna</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Medicare</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Medicaid</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Personal Injury</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Workers' Compensation</div>
+    <div class="ins-badge"><div class="ins-dot"></div>Self-Pay</div>
+  </div>
+  <div class="ins-note">
+    <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+    <span>Insurance coverage and benefits vary by plan. Please call our office at <strong>(716) 893-9200</strong> to verify your specific benefits before your first visit. We are happy to assist with insurance verification.</span>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Contact &amp; Booking</h2>
+  <div class="divider"></div>
+  <div class="contact-grid">
+    <div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+        </div>
+        <div>
+          <h4>Address</h4>
+          <p>1086 Walden Ave, Suite 1<br>Buffalo, NY 14211</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+        </div>
+        <div>
+          <h4>Phone</h4>
+          <a href="tel:7168939200">(716) 893-9200</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">
+          <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+        </div>
+        <div>
+          <h4>Hours Summary</h4>
+          <p>
+            Mon, Wed, Fri: 8–11:45 AM &amp; 2–4 PM<br>
+            Tuesday: 1–4 PM<br>
+            Thursday: 8–11:45 AM<br>
+            Saturday: 9–11:45 AM<br>
+            Sunday: Closed
+          </p>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="booking-card">
+        <h3>Book an Appointment</h3>
+        <p>All appointments are scheduled by phone. Our staff is ready to find a time that works for you and verify your insurance before your visit.</p>
+        <a href="tel:7168939200" class="phone-big">
+          <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          <div>
+            <div class="phone-big-num">(716) 893-9200</div>
+            <div class="phone-big-label">Tap to call during office hours</div>
+          </div>
+        </a>
+        <div class="booking-note">
+          <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+          Your health information is always kept private and secure.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ HIPAA ═══════════ -->
+<section id="hipaa">
+  <div class="hipaa-header">
+    <div class="hipaa-shield">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 2.18l7 3.12V11c0 4.52-3.08 8.74-7 9.93-3.92-1.19-7-5.41-7-9.93V6.3l7-3.12z"/></svg>
+    </div>
+    <div>
+      <h2 class="hipaa-title">Notice of Privacy Practices</h2>
+      <p class="hipaa-subtitle">HIPAA Privacy Rule — 45 CFR Parts 160 &amp; 164</p>
+    </div>
+  </div>
+
+  <div class="hipaa-body">
+
+    <div class="hipaa-section">
+      <p style="color:var(--muted);font-size:.9rem;line-height:1.75;margin-bottom:1rem;">
+        <strong style="color:var(--text);">THIS NOTICE DESCRIBES HOW MEDICAL INFORMATION ABOUT YOU MAY BE USED AND DISCLOSED AND HOW YOU CAN GET ACCESS TO THIS INFORMATION. PLEASE REVIEW IT CAREFULLY.</strong>
+      </p>
+      <p>
+        Walden Bailey Chiropractic is required by law to maintain the privacy of your Protected Health Information (PHI) and to provide you with this Notice of our legal duties and privacy practices. We are required to abide by the terms of this Notice currently in effect.
+      </p>
+    </div>
+
+    <div class="hipaa-divider"></div>
+
+    <div class="hipaa-section">
+      <h3>How We May Use and Disclose Your Health Information</h3>
+      <p>We use and disclose health information about you for the following purposes:</p>
+      <ul>
+        <li><strong style="color:var(--text);">Treatment:</strong> We may use your PHI to provide, coordinate, or manage your chiropractic care and related services, including sharing information with other healthcare providers involved in your treatment.</li>
+        <li><strong style="color:var(--text);">Payment:</strong> We may use and disclose your PHI to obtain payment for services provided, including submitting claims to your health insurance carrier, Medicare, Medicaid, or Workers' Compensation.</li>
+        <li><strong style="color:var(--text);">Healthcare Operations:</strong> We may use your PHI for internal quality assessment, administrative functions, training, and other activities necessary to operate our practice efficiently.</li>
+        <li><strong style="color:var(--text);">Appointment Reminders:</strong> We may contact you to remind you of scheduled appointments or inform you of treatment alternatives.</li>
+        <li><strong style="color:var(--text);">As Required by Law:</strong> We will disclose your PHI when required to do so by federal, state, or local law.</li>
+        <li><strong style="color:var(--text);">Public Health Activities:</strong> We may disclose PHI to public health authorities for activities such as preventing or controlling disease.</li>
+        <li><strong style="color:var(--text);">Law Enforcement:</strong> We may disclose PHI for law enforcement purposes as required or permitted by law.</li>
+        <li><strong style="color:var(--text);">Emergencies:</strong> We may use or disclose your PHI in an emergency treatment situation.</li>
+      </ul>
+    </div>
+
+    <div class="hipaa-divider"></div>
+
+    <div class="hipaa-section">
+      <h3>Uses Requiring Your Authorization</h3>
+      <p>Other uses and disclosures of your PHI not described in this Notice will be made only with your written authorization. You may revoke such authorization in writing at any time, except where we have already taken action relying on it. This includes most disclosures of psychotherapy notes, marketing communications, and the sale of PHI.</p>
+    </div>
+
+    <div class="hipaa-divider"></div>
+
+    <div class="hipaa-section">
+      <h3>Your Rights Regarding Your Health Information</h3>
+      <ul>
+        <li><strong style="color:var(--text);">Right to Inspect and Copy:</strong> You have the right to inspect and obtain a copy of your PHI used to make decisions about your care. Requests must be made in writing. We may charge a reasonable, cost-based fee for copies.</li>
+        <li><strong style="color:var(--text);">Right to Amend:</strong> If you believe your PHI is incorrect or incomplete, you may request an amendment in writing. We may deny your request under certain circumstances.</li>
+        <li><strong style="color:var(--text);">Right to an Accounting of Disclosures:</strong> You may request a list of disclosures of your PHI made by us for purposes other than treatment, payment, or healthcare operations within the last six years.</li>
+        <li><strong style="color:var(--text);">Right to Request Restrictions:</strong> You may request restrictions on how we use or disclose your PHI. We are not required to agree to your request, but we will consider it. We must comply if you request that we not disclose PHI to a health plan for payment or operations if you have paid out-of-pocket in full.</li>
+        <li><strong style="color:var(--text);">Right to Confidential Communications:</strong> You may request that we communicate with you about your health matters in a specific way or at a specific location. We will accommodate reasonable requests.</li>
+        <li><strong style="color:var(--text);">Right to a Paper Copy of This Notice:</strong> You may request a paper copy of this Notice at any time, even if you have agreed to receive it electronically.</li>
+        <li><strong style="color:var(--text);">Right to Be Notified of a Breach:</strong> You have the right to be notified following a breach of your unsecured PHI.</li>
+      </ul>
+    </div>
+
+    <div class="hipaa-divider"></div>
+
+    <div class="hipaa-section">
+      <h3>Our Responsibilities</h3>
+      <ul>
+        <li>We are required to maintain the privacy of your PHI.</li>
+        <li>We are required to provide you with notice of our legal duties and privacy practices.</li>
+        <li>We will notify you promptly if a breach occurs that may have compromised the privacy or security of your information.</li>
+        <li>We must follow the duties and privacy practices described in this Notice and give you a copy of it.</li>
+        <li>We will not use or share your information other than as described here unless you tell us we can in writing. If you tell us we can, you may change your mind at any time.</li>
+      </ul>
+    </div>
+
+    <div class="hipaa-divider"></div>
+
+    <div class="hipaa-section">
+      <h3>Changes to This Notice</h3>
+      <p>We reserve the right to change this Notice at any time. We reserve the right to make the revised Notice effective for PHI we already have about you as well as any information we receive in the future. We will post a copy of the current Notice in our office. The Notice will contain the effective date on the first page.</p>
+    </div>
+
+    <div class="hipaa-divider"></div>
+
+    <div class="hipaa-section">
+      <h3>Complaints</h3>
+      <p>If you believe your privacy rights have been violated, you may file a complaint with our office or with the Secretary of the U.S. Department of Health and Human Services. To file a complaint with our office, contact us at:</p>
+      <p style="margin-top:.8rem;">
+        <strong style="color:var(--text);">Walden Bailey Chiropractic</strong><br>
+        1086 Walden Ave, Suite 1, Buffalo, NY 14211<br>
+        Phone: <a href="tel:7168939200" style="color:var(--gold);text-decoration:none;">(716) 893-9200</a>
+      </p>
+      <p style="margin-top:.8rem;">
+        You will not be penalized in any way for filing a complaint. Complaints to HHS may be submitted at <strong style="color:var(--text);">www.hhs.gov/ocr/privacy/hipaa/complaints</strong>.
+      </p>
+    </div>
+
+    <div class="hipaa-effective">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      Effective Date: <strong>January 1, 2025</strong> &nbsp;|&nbsp; Last Revised: <strong>March 2025</strong>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:.8rem;display:inline-flex;">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="#080808"><path d="M12 2C9.8 2 8 3.8 8 6s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4zm0 10c-4.4 0-8 2-8 4v2h16v-2c0-2-3.6-4-8-4z"/></svg>
+        </div>
+        <div class="nav-logo-text">Walden Bailey<br><span>Chiropractic</span></div>
+      </a>
+      <p>Serving Buffalo, NY with expert chiropractic care. Dedicated to your health, comfort, and long-term wellness.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#hours">Hours &amp; Location</a>
+      <a href="#insurance">Insurance</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Legal &amp; Privacy</h4>
+      <a href="#hipaa">Notice of Privacy Practices</a>
+      <a href="#hipaa">HIPAA Rights</a>
+      <a href="tel:7168939200">(716) 893-9200</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 Walden Bailey Chiropractic. All rights reserved. | 1086 Walden Ave Suite 1, Buffalo, NY 14211</p>
+    <div class="footer-hipaa-badge">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      HIPAA Compliant Practice
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Hamburger menu ──
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    const open = mobileMenu.classList.toggle('open');
+    hamburger.setAttribute('aria-expanded', open);
+  });
+  function closeMobile() { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', false); }
+
+  // ── Highlight today's hours ──
+  const dayMap = { 0: 'sun', 1: 'mon', 2: 'tue', 3: 'wed', 4: 'thu', 5: 'fri', 6: 'sat' };
+  const today = dayMap[new Date().getDay()];
+  const todayRow = document.getElementById('row-' + today);
+  if (todayRow) {
+    todayRow.classList.add('hours-today');
+    const dayEl = todayRow.querySelector('.hours-day');
+    if (dayEl) dayEl.innerHTML += '<span class="today-badge">Today</span>';
+  }
+
+  // ── Scroll fade-in ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.style.transitionDelay = (i % 3) * 0.1 + 's';
+    observer.observe(el);
+  });
+
+  // ── Smooth nav active state ──
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 100) current = s.id; });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--gold)' : '';
+    });
+  }, { passive: true });
+</script>
+</body>
+</html>
