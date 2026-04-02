@@ -1,0 +1,371 @@
+<!--
+  SETUP REQUIRED:
+  1. Create free Cloudinary account at cloudinary.com
+  2. Go to Settings > Upload > Upload presets > Add upload preset
+     - Preset name: walden-office-upload
+     - Signing mode: Unsigned
+     - Folder: walden-office
+     - Uncheck "Resource list" restriction in Security settings
+  3. Replace CLOUDINARY_CLOUD_NAME_PLACEHOLDER with your Cloud Name (found in dashboard)
+  4. Replace CLOUDINARY_UPLOAD_PRESET_PLACEHOLDER with: walden-office-upload
+  5. Replace ADMIN_PASSWORD_PLACEHOLDER with a secure password for Dr. Ward
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin — Walden Bailey Chiropractic</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #0a0a0a; color: #fff; font-family: Arial, sans-serif; min-height: 100vh; }
+
+    .login-screen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .login-card {
+      background: #1a1a1a;
+      border: 1px solid #333;
+      border-radius: 16px;
+      padding: 48px 40px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-card h1 {
+      color: #FFD700;
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+    }
+
+    .login-card p {
+      color: #888;
+      font-size: 0.9rem;
+      margin-bottom: 32px;
+    }
+
+    .admin-screen {
+      display: none;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .admin-screen h1 {
+      color: #FFD700;
+      margin-bottom: 8px;
+    }
+
+    .admin-screen p {
+      color: #888;
+      margin-bottom: 32px;
+    }
+
+    input[type="password"],
+    input[type="text"] {
+      width: 100%;
+      background: #111;
+      border: 1px solid #333;
+      color: #fff;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #FFD700;
+    }
+
+    button {
+      width: 100%;
+      background: #FFD700;
+      color: #000;
+      border: none;
+      padding: 14px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button:hover { opacity: 0.85; }
+    button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .error { color: #cc0000; font-size: 0.9rem; margin-top: -8px; margin-bottom: 12px; }
+    .success { color: #28a745; font-size: 0.9rem; margin-bottom: 12px; }
+
+    .upload-area {
+      border: 2px dashed #333;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      margin-bottom: 20px;
+    }
+
+    .upload-area:hover, .upload-area.dragover {
+      border-color: #FFD700;
+    }
+
+    .upload-area p { color: #888; margin: 0; }
+    .upload-area strong { color: #FFD700; }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .photo-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #333;
+    }
+
+    .photo-item img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .photo-item .delete-btn {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 28px;
+      height: 28px;
+      background: rgba(204,0,0,0.85);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 6px;
+      background: #222;
+      border-radius: 3px;
+      margin-top: 12px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #FFD700;
+      width: 0%;
+      transition: width 0.3s;
+    }
+
+    .section-title {
+      color: #FFD700;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      margin-top: 32px;
+    }
+
+    @media (max-width: 600px) {
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div class="login-screen" id="login-screen">
+    <div class="login-card">
+      <h1>Walden Bailey Chiropractic</h1>
+      <p>Admin Portal — Office Photo Management</p>
+      <input type="password" id="admin-password" placeholder="Enter admin password"
+             onkeydown="if(event.key==='Enter') adminLogin()">
+      <div class="error" id="login-error" style="display:none;">Incorrect password</div>
+      <button onclick="adminLogin()">Sign In</button>
+    </div>
+  </div>
+
+  <!-- Admin Screen -->
+  <div class="admin-screen" id="admin-screen">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+      <h1>📸 Office Photo Manager</h1>
+      <button onclick="adminLogout()" style="width:auto;padding:8px 16px;font-size:0.85rem;">Sign Out</button>
+    </div>
+    <p>Upload photos here to display them in the Office Gallery section of the website. Photos appear automatically — no coding needed.</p>
+
+    <!-- Upload Area -->
+    <div class="section-title">Upload New Photos</div>
+    <div class="upload-area" id="upload-area"
+         onclick="document.getElementById('file-input').click()"
+         ondragover="event.preventDefault();this.classList.add('dragover')"
+         ondragleave="this.classList.remove('dragover')"
+         ondrop="handleDrop(event)">
+      <p style="font-size:2rem;margin-bottom:8px;">📷</p>
+      <p><strong>Click to browse</strong> or drag photos here</p>
+      <p style="font-size:0.8rem;margin-top:8px;">JPG, PNG, WEBP · Max 10MB per photo</p>
+    </div>
+    <input type="file" id="file-input" multiple accept="image/*" style="display:none"
+           onchange="uploadFiles(this.files)">
+    <div class="progress-bar" id="progress-bar">
+      <div class="progress-fill" id="progress-fill"></div>
+    </div>
+    <div id="upload-status"></div>
+
+    <!-- Existing Photos -->
+    <div class="section-title">Current Office Photos</div>
+    <div id="photo-grid" class="photo-grid">
+      <p style="color:#888;grid-column:1/-1;">Loading photos...</p>
+    </div>
+  </div>
+
+  <script>
+    // ===== CONFIG =====
+    const CLOUD_NAME = 'CLOUDINARY_CLOUD_NAME_PLACEHOLDER';
+    const UPLOAD_PRESET = 'CLOUDINARY_UPLOAD_PRESET_PLACEHOLDER';
+    const GALLERY_TAG = 'walden-office';
+    const ADMIN_PASSWORD = 'ADMIN_PASSWORD_PLACEHOLDER';
+
+    // ===== AUTH =====
+    function adminLogin() {
+      const pw = document.getElementById('admin-password').value;
+      if (pw === ADMIN_PASSWORD) {
+        sessionStorage.setItem('wbc_admin', '1');
+        document.getElementById('login-screen').style.display = 'none';
+        document.getElementById('admin-screen').style.display = 'block';
+        loadExistingPhotos();
+      } else {
+        document.getElementById('login-error').style.display = 'block';
+      }
+    }
+
+    function adminLogout() {
+      sessionStorage.removeItem('wbc_admin');
+      location.reload();
+    }
+
+    // Check if already logged in
+    if (sessionStorage.getItem('wbc_admin') === '1') {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('admin-screen').style.display = 'block';
+      loadExistingPhotos();
+    }
+
+    // ===== UPLOAD =====
+    function handleDrop(e) {
+      e.preventDefault();
+      document.getElementById('upload-area').classList.remove('dragover');
+      uploadFiles(e.dataTransfer.files);
+    }
+
+    async function uploadFiles(files) {
+      if (!files || files.length === 0) return;
+
+      const status = document.getElementById('upload-status');
+      const progressBar = document.getElementById('progress-bar');
+      const progressFill = document.getElementById('progress-fill');
+
+      progressBar.style.display = 'block';
+      status.innerHTML = '';
+
+      let uploaded = 0;
+
+      for (const file of files) {
+        if (file.size > 10 * 1024 * 1024) {
+          status.innerHTML += '<p class="error">⚠️ ' + file.name + ' is too large (max 10MB)</p>';
+          continue;
+        }
+
+        try {
+          status.innerHTML = '<p style="color:#888;">Uploading ' + file.name + '...</p>';
+
+          const formData = new FormData();
+          formData.append('file', file);
+          formData.append('upload_preset', UPLOAD_PRESET);
+          formData.append('tags', GALLERY_TAG);
+          formData.append('folder', 'walden-office');
+
+          const res = await fetch(
+            'https://api.cloudinary.com/v1_1/' + CLOUD_NAME + '/image/upload',
+            { method: 'POST', body: formData }
+          );
+
+          if (!res.ok) throw new Error('Upload failed');
+
+          uploaded++;
+          const pct = Math.round((uploaded / files.length) * 100);
+          progressFill.style.width = pct + '%';
+
+          status.innerHTML = '<p class="success">✓ ' + file.name + ' uploaded successfully</p>';
+        } catch (err) {
+          status.innerHTML += '<p class="error">✗ Failed to upload ' + file.name + '</p>';
+        }
+      }
+
+      progressBar.style.display = 'none';
+      progressFill.style.width = '0%';
+
+      if (uploaded > 0) {
+        setTimeout(function() {
+          status.innerHTML = '';
+          loadExistingPhotos();
+        }, 1500);
+      }
+    }
+
+    // ===== LOAD EXISTING PHOTOS =====
+    async function loadExistingPhotos() {
+      const grid = document.getElementById('photo-grid');
+      grid.innerHTML = '<p style="color:#888;grid-column:1/-1;">Loading...</p>';
+
+      try {
+        const res = await fetch(
+          'https://res.cloudinary.com/' + CLOUD_NAME + '/image/list/' + GALLERY_TAG + '.json'
+        );
+
+        if (!res.ok) throw new Error('No photos');
+
+        const data = await res.json();
+
+        if (!data.resources || data.resources.length === 0) {
+          grid.innerHTML = '<p style="color:#888;grid-column:1/-1;">No photos uploaded yet. Upload some above!</p>';
+          return;
+        }
+
+        grid.innerHTML = data.resources.map(function(img) {
+          const thumb = 'https://res.cloudinary.com/' + CLOUD_NAME + '/image/upload/w_400,h_300,c_fill,q_auto/' + img.public_id;
+          return '<div class="photo-item"><img src="' + thumb + '" alt="Office photo"><button class="delete-btn" onclick="deletePhoto(\'' + img.public_id + '\')" title="Delete">×</button></div>';
+        }).join('');
+
+      } catch (err) {
+        grid.innerHTML = '<p style="color:#888;grid-column:1/-1;">No photos yet — upload some above!</p>';
+      }
+    }
+
+    // ===== DELETE PHOTO =====
+    function deletePhoto(publicId) {
+      if (!confirm('Delete this photo from the website?')) return;
+      // Note: Cloudinary unsigned presets cannot delete via API from frontend
+      // For deletion, log in to cloudinary.com and delete from Media Library
+      alert('To delete photos, please log in to cloudinary.com → Media Library → walden-office folder and delete from there.\n\nThis keeps your credentials secure.');
+    }
+  </script>
+</body>
+</html>
